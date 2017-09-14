@@ -7,41 +7,133 @@ require_relative 'restricted_array.rb'
 # Calculates the length of the restricted array. All values are integers.
 # The restricted_array is terminated by 'nil' i.e. array[length] = nil
 def length(array)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  i = 0
+  while array[i] != nil
+    i = i + 1
+  end
+  return i
 end
 
 # Prints each integer values in the array
 def print_array(array)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  i = 0
+  while array[i] != nil
+    return array[i]
+  end
 end
 
 # For an unsorted array, searches for 'value_to_find'.
 # Returns true if found, false otherwise.
 def search(array, length, value_to_find)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  i = 0
+  while i < length
+    if array[i] == value_to_find
+      return true
+    else
+      i = i + 1
+      if i == length
+        return false
+      end
+    end
+  end
 end
-
 # Finds and returns the largest integer value the array
 # Assumes that the array is not sorted.
 def find_largest(array, length)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  # broken??
+  # i = 0
+  # largest_value = 1
+  # while i < length
+  #   if i > largest_value
+  #     largest_value = i
+  #   else
+  #     i = i + 1
+  #   end
+  # end
+  # return largest_value
+
+  i = 0
+  largest_value = array[i]
+  while i < length
+    if array[i] > largest_value
+      largest_value = array[i]
+    end
+    i += 1
+  end
+  return largest_value
 end
 
 # Finds and returns the smallest integer value in the array
 # Assumes that the array is not sorted.
+
 def find_smallest(array, length)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  # broken??
+  # i = 0
+  # smallest_value = 0
+  # while i < length
+  #   if i < smallest_value
+  #     smallest_value = i
+  #   else
+  #     i = i + 1
+  #   end
+  # end
+  # return smallest_value
+  i = 0
+  smallest_value = array[i]
+
+  while i < length
+    if array[i] < smallest_value
+      smallest_value = array[i]
+    end
+    i += 1
+  end
+  return smallest_value
 end
 
 # Reverses the values in the integer array in place
-def reverse(array, length)
-  puts "NOT IMPLEMENTED"
-end
+  def reverse(array, length)
+    # puts "NOT IMPLEMENTED"
+    #broken, infinite loop
+    i = 0
+    j = length - 1
+
+    while i < j
+      first = array[i]
+      last = array[j]
+
+      array[i] = last
+      array[j] = first
+
+      first += 1
+      last -= 1
+    end
+    return array
+  end
 
 # For an array sorted in ascending order, searches for 'value_to_find'.
 # Returns true if found, false otherwise.
 def binary_search(array, length, value_to_find)
-  puts "NOT IMPLEMENTED"
+  # puts "NOT IMPLEMENTED"
+  #broken
+  low = 0
+  high = length - 1
+
+  while low < high
+    mid = (low + high)/2
+
+    if mid == value_to_find
+      return true
+    elsif mid > value_to_find
+      high = mid - 1
+    elsif mid < value_to_find
+      low = mid + 1
+    end
+  end
 end
 
 # Helper method provided to sort the array in ascending order
